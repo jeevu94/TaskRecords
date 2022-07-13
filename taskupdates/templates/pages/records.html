@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<table class="table text-center">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Assignee</th>
+      <th scope="col">Task</th>
+      <th scope="col">Date</th>
+            <th scope="col">Original Estimate</th>
+            <th scope="col">Updates</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% if records %}
+    {% for record in records %}
+    <tr>
+        <th>{{ forloop.counter }}</th>
+        <td>{{ record.assignee.user_name }}</td>
+        <td>{{ record.task }}</td>
+        <td>{{ record.date }}</td>
+        <td>{{ record.original_estimate }}</td>
+        <td>{{ record.update }}</td>
+    </tr>
+    {% endfor %}
+  {% else %}
+  <tr>
+    <th colspan="6" class="text-center"> There are no records yet</th>
+  </tr>
+  {% endif %}
+  </tbody>
+</table>
+
+{% endblock content %}
