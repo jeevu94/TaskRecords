@@ -2,6 +2,14 @@ from django import forms
 from django.forms.widgets import Textarea
 
 from taskupdates.update.models import TaskUpdate
+from taskupdates.users.models import User
+
+
+class TaskFilterForm(forms.Form):
+    assignees = forms.ModelChoiceField(queryset=User.objects.all(), required=False)
+    date = forms.DateField(
+        widget=forms.TextInput(attrs={"type": "date"}), required=False
+    )
 
 
 class TaskUpdatesForm(forms.ModelForm):
