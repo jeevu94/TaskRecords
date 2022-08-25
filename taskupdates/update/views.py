@@ -22,9 +22,7 @@ class RecordsView(View):
             assignees = form.cleaned_data.get("assignees")
             date = form.cleaned_data.get("date")
             if assignees and date:
-                records = TaskUpdate.objects.filter(
-                    assignee_id=form.changed_data["assignees"].id, date=date
-                )
+                records = TaskUpdate.objects.filter(assignee_id=assignees.id, date=date)
             elif assignees:
                 records = TaskUpdate.objects.filter(assignee_id=assignees.id)
             elif date:
